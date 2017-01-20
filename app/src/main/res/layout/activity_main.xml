@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android2="http://schemas.android.com/apk/res/android"
+    xmlns:tools="https://schemas.android.com/tools"
+    android2:id="@+id/activity_main"
+    android2:orientation="vertical"
+    android2:layout_width="match_parent"
+    android2:layout_height="match_parent"
+    android2:paddingLeft="@dimen/activity_horizontal_margin"
+    android2:paddingTop="50dp"
+    android2:paddingRight="@dimen/activity_horizontal_margin"
+    android2:paddingBottom="@dimen/activity_vertical_margin"
+    android2:gravity="center_horizontal"
+    android2:background="@color/white"
+    tools:context="com.androidtutorialpoint.androidfirebaselogin.SignInActivity">
+
+    <ImageView
+        android2:id="@+id/image"
+        android2:layout_width="wrap_content"
+        android2:layout_height="wrap_content"
+        android2:src="@drawable/augie_a"
+        android2:layout_gravity="center"/>
+
+    <TextView
+        android2:id="@+id/name_text_view"
+        android2:layout_width="wrap_content"
+        android2:layout_height="wrap_content"
+        android2:text="Augustana College Express Service"
+        android2:textSize="20dp"
+        android2:textColor="@color/colorPrimaryDark"
+        android2:layout_marginTop="30dp" />
+
+    <com.google.android.gms.common.SignInButton
+        android2:id="@+id/sign_in_button"
+        android2:layout_marginTop="20dp"
+        android2:layout_width="match_parent"
+        android2:layout_height="wrap_content" />
+</LinearLayout>
