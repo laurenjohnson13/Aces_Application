@@ -14,14 +14,21 @@
     android2:background="@color/white"
     tools:context="com.example.aces_application.WelcomeActivity">
 
+    <android.support.v4.view.ViewPager
+        android2:id="@+id/view_pager"
+        android2:layout_width="match_parent"
+        android2:layout_height="0dp"
+        android2:layout_weight="1">
+    </android.support.v4.view.ViewPager>
+
     <TextView
-        android2:id="@+id/name_text_view"
-        android2:layout_width="wrap_content"
+        android2:layout_width="match_parent"
         android2:layout_height="wrap_content"
-        android2:text="Welcome!"
-        android2:textSize="30dp"
+        android2:id="@+id/text"
+        android2:text="Welcome to Augustana College Express Services"
+        android2:textSize="25dp"
         android2:textColor="@color/colorPrimaryDark"
-        android2:layout_marginTop="30dp" />
+        android2:gravity="center"/>
 
     <Button
         android2:layout_width="match_parent"
@@ -31,7 +38,7 @@
         android2:gravity="center"
         android2:textSize="30dp"
         android2:textColor="@color/white"
-        android2:layout_marginTop="50dp"
+        android2:layout_marginTop="30dp"
         android2:background="@color/colorPrimaryDark"/>
 
 </LinearLayout>
