@@ -14,28 +14,27 @@
         android:id="@+id/textView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:text="Enter Student Id Numbers:"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/textView1"
-    android:id="@+id/scrollView">
 
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/textView1"
+        android:layout_height="wrap_content"
+        android:layout_weight=".85">
         <LinearLayout
-            android:id="@+id/linearList"
             android:layout_width="match_parent"
+            android:orientation="vertical"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
+            android:id="@+id/linear_layout">
         </LinearLayout>
-</ScrollView>
+    </ScrollView>
 
     <TextView
         android:id="@+id/textView2"
@@ -44,6 +43,7 @@
         android:text="Enter your location:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:gravity="center_horizontal"
+        android:layout_marginTop="17dp"
         android:layout_below="@+id/scrollView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -93,7 +93,6 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:id="@+id/requestBtn"
         android:text="Submit"
         android:gravity="center"
@@ -101,4 +100,6 @@
         android:textColor="@color/white"
         android:layout_below="@+id/editText2"
         android:background="@color/colorPrimaryDark"/>
+
+
 </RelativeLayout>
