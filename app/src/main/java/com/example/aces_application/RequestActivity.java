@@ -29,7 +29,7 @@ public class RequestActivity extends AppCompatActivity {
 
     private static final String mDatabase = "ZeXbN6PpTgc9wWQOCk7Nju5G0B92";
     private int numRiders;
-    private long activeRides = 0;
+    public long activeRides = 0;
     private List<Integer> id;
     private List<EditText> idText;
     private EditText location;
@@ -38,7 +38,6 @@ public class RequestActivity extends AppCompatActivity {
     private Button submitBtn;
     private DatabaseReference database;
     public DatabaseReference riderRef;
-    private Bundle bundle;
 
 
     @Override
@@ -61,6 +60,9 @@ public class RequestActivity extends AppCompatActivity {
                         activeRides = dataSnapshot.getChildrenCount();
                         Log.d("ACTIVE_RIDES",""+activeRides);
 
+                        Intent intent = new Intent(RequestActivity.this, WaitActivity.class);
+                        intent.putExtra("activeRides", activeRides);
+                        startActivity(intent);
                     }
 
                     @Override
@@ -69,10 +71,26 @@ public class RequestActivity extends AppCompatActivity {
                     }
                 });
                 addInfoToFirebase();
-                Intent intent = new Intent(RequestActivity.this, WaitActivity.class);
-                intent.putExtra("activeRides",activeRides);
-                Log.d("ACTIVE_RIDES",""+activeRides);
-                startActivity(intent);
+//                AlertDialog.Builder alert = new AlertDialog.Builder(RequestActivity.this);
+//
+//                alert.setTitle("ACES");
+//                alert.setMessage("Great! Your ride is coming!");
+//
+//                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int whichButton) {
+//                        Intent intent = new Intent(RequestActivity.this, WaitActivity.class);
+//                        intent.putExtra("activeRides", activeRides);
+//                        startActivity(intent);
+//                    }
+//                });
+//
+//                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int whichButton) {
+//                        // Canceled.
+//                    }
+//                });
+//
+//                alert.show();
             }
         });
 
@@ -122,5 +140,8 @@ public class RequestActivity extends AppCompatActivity {
 
     public DatabaseReference getDatabase() {
         return riderRef;
+    }
+    public long getActiveRides() {
+        return activeRides;
     }
 }
