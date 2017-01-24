@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +29,7 @@ public class RequestActivity extends AppCompatActivity {
 
     private static final String mDatabase = "ZeXbN6PpTgc9wWQOCk7Nju5G0B92";
     private int numRiders;
+    private long activeRides = 0;
     private List<Integer> id;
     private List<EditText> idText;
     private EditText location;
@@ -34,6 +37,8 @@ public class RequestActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
     private Button submitBtn;
     private DatabaseReference database;
+    public DatabaseReference riderRef;
+    private Bundle bundle;
 
 
     @Override
@@ -50,8 +55,23 @@ public class RequestActivity extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                database.child("Active Rides").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        activeRides = dataSnapshot.getChildrenCount();
+                        Log.d("ACTIVE_RIDES",""+activeRides);
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
                 addInfoToFirebase();
                 Intent intent = new Intent(RequestActivity.this, WaitActivity.class);
+                intent.putExtra("activeRides",activeRides);
+                Log.d("ACTIVE_RIDES",""+activeRides);
                 startActivity(intent);
             }
         });
@@ -66,13 +86,15 @@ public class RequestActivity extends AppCompatActivity {
     private void addInfoToFirebase() {
         String mLocation = location.getText().toString();
         String mDestination = destination.getText().toString();
+
         for(int i = 0; i < numRiders; i++) {
             EditText mId = idText.get(i);
             id.add(Integer.parseInt(mId.getText().toString()));
         }
 
         Ride newRide = new Ride(mLocation, mDestination, id, true);
-        database.child("Ride").push().setValue(newRide);
+        riderRef = database.child("Active Rides").push();
+        riderRef.setValue(newRide);
 
     }
 
@@ -96,5 +118,9 @@ public class RequestActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public DatabaseReference getDatabase() {
+        return riderRef;
     }
 }

@@ -17,7 +17,7 @@ public class WaitActivity extends AppCompatActivity {
     private CountDownTimer timer;
     private TextView timerText;
     private DatabaseReference database;
-    private int activeRides;
+    private long activeRides;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class WaitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wait);
 
         Bundle bundle = getIntent().getExtras();
-        activeRides = bundle.getInt("activeRiders");
+        activeRides = bundle.getLong("activeRiders");
 
         timerText = (TextView) findViewById(R.id.text2);
         timerText.setText("" + activeRides);
