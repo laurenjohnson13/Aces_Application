@@ -21,11 +21,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+/**
+ * Created by laurenjohnson13 on 1/21/2017.
+ *
+ * Google Sign-in code from https://firebase.google.com/docs/auth/android/google-signin
+ */
 public class MainActivity extends AppCompatActivity {
 
     private SignInButton mGoogleButton;
     private static final int RC_SIGN_IN = 1;
-    private GoogleApiClient mGoogleApiClient;
+    public GoogleApiClient mGoogleApiClient;
     private FirebaseAuth mAuth;
     private static final String TAG = "MAIN_ACTIVITY";
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -42,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
                 if(firebaseAuth.getCurrentUser() != null){
-
-                    startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
+                    Intent intent = new Intent(MainActivity.this, StartScreen.class);
+                    startActivity(intent);
                 }
             }
         };
@@ -63,9 +68,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }).addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
 
+
+
         mGoogleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // checks to see if there is a current google user
+                if(mGoogleApiClient.isConnected()) {
+                    Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                }
                 signIn();
             }
         });
@@ -121,4 +132,5 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }

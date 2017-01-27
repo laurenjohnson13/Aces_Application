@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context="com.example.aces_application.WaitActivity">
 
@@ -16,16 +17,41 @@
         android:layout_height="wrap_content"
         android:id="@+id/text"
         android:text="Your APPROXIMATE wait time:"
-        android:textSize="25dp"
+        android:textSize="40dp"
         android:textColor="@color/colorPrimaryDark"
         android:gravity="center" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/text2"
-        android:textSize="60dp"
+        android:textSize="80dp"
         android:textColor="@color/colorPrimaryDark"
         android:gravity="center" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pickedUpBtn"
+        android:text="Picked Up"
+        android:gravity="center"
+        android:textSize="50dp"
+        android:focusableInTouchMode="false"
+        android:textColor="@color/white"
+        android:onClick="pickedUp"
+        android:layout_below="@+id/text2"
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="false"
+        android:id="@+id/cancel"
+        android:text="Cancel Ride"
+        android:gravity="center"
+        android:textSize="50dp"
+        android:textColor="@color/white"
+        android:onClick="cancelRide"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/pickedUpBtn"
+        android:background="@color/colorPrimaryDark"/>
 
 
 </LinearLayout>

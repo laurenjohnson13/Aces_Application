@@ -26,7 +26,7 @@
         android2:layout_height="wrap_content"
         android2:id="@+id/text"
         android2:text="Welcome to Augustana College Express Services"
-        android2:textSize="25dp"
+        android2:textSize="35dp"
         android2:textColor="@color/colorPrimaryDark"
         android2:gravity="center"/>
 
