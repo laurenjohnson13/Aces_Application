@@ -21,7 +21,6 @@ import java.util.List;
 
 public class RequestActivity extends AppCompatActivity {
 
-    private static final String mDatabase = "ZeXbN6PpTgc9wWQOCk7Nju5G0B92";
     private int numRiders;
     public long activeRides = 0;
     private List<Integer> id;

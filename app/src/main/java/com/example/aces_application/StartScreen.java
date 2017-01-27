@@ -20,7 +20,7 @@ public class StartScreen extends AppCompatActivity {
                 StartScreen.this.startActivity(intent);
                 StartScreen.this.finish();
             }
-        }, 2000);
+        }, 1500);
 
     }
 }
